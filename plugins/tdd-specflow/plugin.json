@@ -1,6 +1,6 @@
 {
   "name": "tdd-specflow",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "A comprehensive TDD workflow plugin that combines Test-Driven Development with Specification by Example. Includes specialized agents for each TDD phase (RED-GREEN-REFACTOR), requirements analysis, technical design, and BDD-style test scenarios.",
   "author": "dgomezs",
   "homepage": "https://github.com/dgomezs/claude-code",
