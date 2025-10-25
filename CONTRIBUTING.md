@@ -1,38 +1,30 @@
-# Contributing to TDD SpecFlow
+# Using This Repository
 
-Thank you for your interest in contributing to TDD SpecFlow! This document provides guidelines for contributing to the plugin.
+Thank you for your interest in this TDD SpecFlow plugin!
 
-## How to Contribute
+## Usage Policy
 
-### Reporting Issues
+**This repository is provided as-is for your use and learning.** You are free to:
+- Use the plugin in your projects
+- Fork and modify it for your own needs
+- Learn from the code and adapt it to your workflow
 
-If you find a bug or have a feature request:
+**Please note:** This repository is **not actively maintained** and **does not accept issues or merge requests**. Feel free to fork and customize as needed for your own purposes.
 
-1. Check if the issue already exists in the [issue tracker](https://gitlab.com/dgomezs2/ai/claude-code/-/issues)
-2. If not, create a new issue with:
-   - Clear description of the problem or feature
-   - Steps to reproduce (for bugs)
-   - Expected vs actual behavior
-   - Claude Code version and environment details
+## Using the Plugin
 
-### Submitting Changes
+Simply install and use the plugin as documented in the README.md. You can fork this repository and maintain your own version if you need custom modifications.
 
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Make your changes following the guidelines below
-4. Test your changes thoroughly
-5. Commit with clear messages (`git commit -m 'Add amazing feature'`)
-6. Push to your fork (`git push origin feature/amazing-feature`)
-7. Open a Pull Request
+## Forking and Customization
 
-## Development Guidelines
+If you want to customize this plugin for your own use, feel free to fork the repository and modify it as needed.
 
 ### Plugin Structure
 
 The plugin follows this structure:
 
 ```
-tdd-specflow/
+claude-code/
 ├── .claude/
 │   ├── agents/         # Specialized agents
 │   └── commands/       # Slash commands
@@ -166,14 +158,8 @@ All changes should include documentation updates:
 
 ## Questions?
 
-If you have questions about contributing:
-
-1. Check existing [issues](https://gitlab.com/dgomezs2/ai/claude-code/-/issues)
-2. Open a [merge request](https://gitlab.com/dgomezs2/ai/claude-code/-/merge_requests) for discussion
-3. Reference [Claude Code documentation](https://docs.claude.com/en/docs/claude-code)
+For questions about using Claude Code plugins in general, reference the [Claude Code documentation](https://docs.claude.com/en/docs/claude-code).
 
 ## License
 
-By contributing, you agree that your contributions will be licensed under the MIT License.
-
-Thank you for contributing to TDD SpecFlow!
+This repository is licensed under the MIT License. You are free to fork, modify, and use it as you wish.

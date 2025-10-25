@@ -221,20 +221,19 @@ The marketplace includes metadata in `.claude-plugin/marketplace.json`:
 - **metadata.version**: Marketplace version (follows semver)
 - **metadata.pluginRoot**: Base path for relative plugin sources (default: "plugins")
 
-## Contributing Plugins
+## Using and Forking
 
-See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines on contributing plugins to this marketplace.
-
-To propose a new plugin:
+This marketplace is provided as-is for your use. To create your own version:
 1. Fork this repository
 2. Add your plugin following the structure above
 3. Update `.claude-plugin/marketplace.json`
-4. Submit a pull request with plugin documentation
+4. Maintain your own fork with your customizations
 
-## Support
+**Note:** This repository does not accept issues or merge requests. Feel free to fork and customize as needed.
 
-- **Issues**: https://gitlab.com/dgomezs2/ai/claude-code/-/issues
-- **Discussions**: https://gitlab.com/dgomezs2/ai/claude-code/-/merge_requests
+## Documentation
+
+- **Repository**: https://gitlab.com/dgomezs2/ai/claude-code
 - **Claude Code Docs**: https://docs.claude.com/en/docs/claude-code
 
 ## License

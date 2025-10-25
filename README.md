@@ -460,25 +460,27 @@ See [MARKETPLACE.md](MARKETPLACE.md) for:
 - Centralized plugin discovery and distribution
 - Structured plugin metadata and versioning
 
-## Contributing
+## Usage and Forking
 
-Contributions are welcome! Please feel free to submit:
-- Issues and bug reports
-- Feature requests for existing plugins
-- New plugins to add to the marketplace
-- Documentation improvements
+This repository is provided as-is for your use and learning. You are free to:
+- Use the plugin in your projects
+- Fork and modify it for your own needs
+- Adapt the code and patterns to your workflow
 
-See [CONTRIBUTING.md](CONTRIBUTING.md) for detailed guidelines.
+**Note:** This repository is not actively maintained and does not accept issues or merge requests. Feel free to fork and customize as needed.
+
+See [CONTRIBUTING.md](CONTRIBUTING.md) for development guidelines if you want to fork and customize.
 
 ## License
 
 MIT License - see LICENSE file for details
 
-## Support
+## Documentation
 
-- **Issues**: https://gitlab.com/dgomezs2/ai/claude-code/-/issues
-- **Documentation**: https://gitlab.com/dgomezs2/ai/claude-code
+- **Repository**: https://gitlab.com/dgomezs2/ai/claude-code
 - **Claude Code Docs**: https://docs.claude.com/en/docs/claude-code
+
+**Note:** This repository does not accept issues or merge requests. For general Claude Code questions, refer to the official Claude Code documentation.
 
 ## Credits
 

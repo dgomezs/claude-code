@@ -108,9 +108,14 @@ python3 -m json.tool < plugins/your-plugin-name/plugin.json > /dev/null
 /your-command
 ```
 
-### 7. Submit Pull Request
+### 7. Use Your Customized Plugin
 
-See [CONTRIBUTING.md](../CONTRIBUTING.md) for contribution guidelines.
+Install your customized plugin locally in your fork:
+```bash
+/plugin install /path/to/your/fork/plugins/your-plugin-name
+```
+
+**Note:** This repository does not accept merge requests. Maintain plugins in your own fork.
 
 ## Plugin Categories
 
@@ -137,9 +142,11 @@ Use standard categories:
 
 For reference, see the main tdd-specflow plugin structure in the repository root.
 
-## Support
+## Documentation
 
-Questions about adding plugins? See:
+For information about the marketplace structure:
 - [MARKETPLACE.md](../MARKETPLACE.md) - Detailed marketplace documentation
-- [Issues](https://gitlab.com/dgomezs2/ai/claude-code/-/issues) - Report issues or ask questions
-- [Merge Requests](https://gitlab.com/dgomezs2/ai/claude-code/-/merge_requests) - Community discussions
+- [CONTRIBUTING.md](../CONTRIBUTING.md) - Development guidelines for forking
+- [Claude Code Docs](https://docs.claude.com/en/docs/claude-code) - Official Claude Code documentation
+
+**Note:** This repository does not accept issues or merge requests. Fork and customize as needed.
