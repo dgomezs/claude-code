@@ -3,10 +3,10 @@
   "version": "0.0.1",
   "description": "A comprehensive TDD workflow plugin that combines Test-Driven Development with Specification by Example. Includes specialized agents for each TDD phase (RED-GREEN-REFACTOR), requirements analysis, technical design, and BDD-style test scenarios.",
   "author": "dgomezs",
-  "homepage": "https://gitlab.com/dgomezs2/ai/claude-code",
+  "homepage": "https://github.com/dgomezs/claude-code",
   "repository": {
     "type": "git",
-    "url": "https://gitlab.com/dgomezs2/ai/claude-code.git"
+    "url": "https://github.com/dgomezs/claude-code.git"
   },
   "license": "MIT",
   "keywords": [

@@ -2,7 +2,7 @@
   "name": "tdd-specflow-marketplace",
   "owner": {
     "name": "dgomezs",
-    "url": "https://gitlab.com/dgomezs2/ai/claude-code"
+    "url": "https://github.com/dgomezs/claude-code"
   },
   "metadata": {
     "description": "A comprehensive TDD workflow plugin with Specification by Example for Claude Code",

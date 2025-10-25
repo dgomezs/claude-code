@@ -23,7 +23,7 @@ TDD SpecFlow provides a complete, automated workflow for building features using
 Install the plugin using Claude Code's plugin command:
 
 ```bash
-/plugin install https://gitlab.com/dgomezs2/ai/claude-code
+/plugin install https://github.com/dgomezs/claude-code
 ```
 
 Or if using a local clone:
@@ -477,7 +477,7 @@ MIT License - see LICENSE file for details
 
 ## Documentation
 
-- **Repository**: https://gitlab.com/dgomezs2/ai/claude-code
+- **Repository**: https://github.com/dgomezs/claude-code
 - **Claude Code Docs**: https://docs.claude.com/en/docs/claude-code
 
 **Note:** This repository does not accept issues or merge requests. For general Claude Code questions, refer to the official Claude Code documentation.

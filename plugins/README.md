@@ -40,7 +40,7 @@ plugins/your-plugin-name/
   "description": "Your plugin description",
   "author": "your-name",
   "license": "MIT",
-  "homepage": "https://gitlab.com/dgomezs2/ai/claude-code/-/tree/main/plugins/your-plugin-name",
+  "homepage": "https://github.com/dgomezs/claude-code/tree/main/plugins/your-plugin-name",
   "keywords": ["keyword1", "keyword2"],
   "commands": [
     {

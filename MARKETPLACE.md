@@ -9,7 +9,7 @@ A comprehensive TDD workflow plugin that combines Test-Driven Development with S
 
 **Location**: Root directory
 **Version**: 0.0.1
-**Installation**: `/plugin install https://gitlab.com/dgomezs2/ai/claude-code`
+**Installation**: `/plugin install https://github.com/dgomezs/claude-code`
 
 See [README.md](README.md) for complete documentation.
 
@@ -180,10 +180,10 @@ When adding plugins to this marketplace:
 
 ```bash
 # Install tdd-specflow (main plugin)
-/plugin install https://gitlab.com/dgomezs2/ai/claude-code
+/plugin install https://github.com/dgomezs/claude-code
 
 # Install plugin from subdirectory (when available)
-/plugin install https://gitlab.com/dgomezs2/ai/claude-code/plugins/plugin-name
+/plugin install https://github.com/dgomezs/claude-code/plugins/plugin-name
 ```
 
 ### Install via Marketplace Reference
@@ -233,7 +233,7 @@ This marketplace is provided as-is for your use. To create your own version:
 
 ## Documentation
 
-- **Repository**: https://gitlab.com/dgomezs2/ai/claude-code
+- **Repository**: https://github.com/dgomezs/claude-code
 - **Claude Code Docs**: https://docs.claude.com/en/docs/claude-code
 
 ## License
