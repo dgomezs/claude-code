@@ -6,7 +6,7 @@
   },
   "metadata": {
     "description": "A comprehensive TDD workflow plugin with Specification by Example for Claude Code",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "pluginRoot": "plugins"
   },
   "plugins": [
@@ -14,7 +14,7 @@
       "name": "tdd-specflow",
       "source": "./plugins/tdd-specflow",
       "description": "Complete TDD workflow automation with BDD-style test scenarios, specialized agents for each TDD phase, and intelligent orchestration",
-      "version": "0.0.1",
+      "version": "0.0.2",
       "author": {
         "name": "dgomezs",
         "url": "https://github.com/dgomezs"
