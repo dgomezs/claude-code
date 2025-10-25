@@ -38,6 +38,33 @@
         "workflow-automation",
         "code-quality"
       ]
+    },
+    {
+      "name": "dgomezs-toolkit",
+      "source": "./plugins/dgomezs-toolkit",
+      "description": "A personal toolkit of development skills and best practices for Java, Quarkus, testing, and general software engineering",
+      "version": "0.0.1",
+      "author": {
+        "name": "dgomezs",
+        "url": "https://github.com/dgomezs"
+      },
+      "license": "MIT",
+      "category": "skills-library",
+      "keywords": [
+        "java",
+        "quarkus",
+        "testing",
+        "toolkit",
+        "best-practices",
+        "skills"
+      ],
+      "tags": [
+        "java",
+        "quarkus",
+        "testing",
+        "skills",
+        "best-practices"
+      ]
     }
   ]
 }

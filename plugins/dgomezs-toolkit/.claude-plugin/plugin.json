@@ -1,0 +1,21 @@
+{
+  "name": "dgomezs-toolkit",
+  "version": "0.0.1",
+  "description": "A personal toolkit of development skills and best practices for Java, Quarkus, testing, and general software engineering",
+  "author": {
+    "name": "dgomezs"
+  },
+  "homepage": "https://github.com/dgomezs/claude-code",
+  "repository": "https://github.com/dgomezs/claude-code.git",
+  "license": "MIT",
+  "keywords": [
+    "java",
+    "quarkus",
+    "testing",
+    "toolkit",
+    "best-practices",
+    "skills"
+  ],
+  "commands": [],
+  "agents": []
+}
