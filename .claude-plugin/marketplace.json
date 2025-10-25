@@ -12,10 +12,13 @@
   "plugins": [
     {
       "name": "tdd-specflow",
-      "source": ".",
+      "source": "./plugins",
       "description": "Complete TDD workflow automation with BDD-style test scenarios, specialized agents for each TDD phase, and intelligent orchestration",
       "version": "0.0.1",
-      "author": "dgomezs",
+      "author": {
+        "name": "dgomezs",
+        "url": "https://github.com/dgomezs"
+      },
       "license": "MIT",
       "category": "development-workflow",
       "keywords": [
