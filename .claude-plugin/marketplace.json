@@ -1,0 +1,40 @@
+{
+  "name": "tdd-specflow-marketplace",
+  "owner": {
+    "name": "dgomezs",
+    "url": "https://github.com/dgomezs/tdd-specflow"
+  },
+  "metadata": {
+    "description": "A comprehensive TDD workflow plugin with Specification by Example for Claude Code",
+    "version": "1.0.0",
+    "pluginRoot": "plugins"
+  },
+  "plugins": [
+    {
+      "name": "tdd-specflow",
+      "source": ".",
+      "description": "Complete TDD workflow automation with BDD-style test scenarios, specialized agents for each TDD phase, and intelligent orchestration",
+      "version": "1.0.0",
+      "author": "dgomezs",
+      "license": "MIT",
+      "category": "development-workflow",
+      "keywords": [
+        "tdd",
+        "test-driven-development",
+        "bdd",
+        "specification-by-example",
+        "testing",
+        "workflow",
+        "refactoring",
+        "requirements"
+      ],
+      "tags": [
+        "testing",
+        "tdd",
+        "bdd",
+        "workflow-automation",
+        "code-quality"
+      ]
+    }
+  ]
+}
