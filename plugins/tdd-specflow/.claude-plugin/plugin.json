@@ -19,6 +19,22 @@
     "requirements",
     "red-green-refactor"
   ],
-  "commands": "./commands",
-  "agents": "./agents"
+  "commands": [
+    "./commands/create-spec.md",
+    "./commands/test-scenarios.md",
+    "./commands/create-tech-design.md",
+    "./commands/create-research.md",
+    "./commands/start-tdd.md"
+  ],
+  "agents": [
+    "./agents/requirements-analyzer.md",
+    "./agents/qa-engineer.md",
+    "./agents/software-architect.md",
+    "./agents/codebase-locator.md",
+    "./agents/codebase-pattern-finder.md",
+    "./agents/codebase-analyzer.md",
+    "./agents/tdd-red.md",
+    "./agents/tdd-green.md",
+    "./agents/tdd-refactor.md"
+  ]
 }
