@@ -24,74 +24,74 @@
     {
       "name": "/create-spec",
       "description": "Create requirements.md with testable acceptance criteria from a ticket or prompt",
-      "path": ".claude/commands/create-spec.md"
+      "path": "./commands/create-spec.md"
     },
     {
       "name": "/test-scenarios",
       "description": "Create or manage test scenarios from requirements.md using the qa-engineer agent",
-      "path": ".claude/commands/test-scenarios.md"
+      "path": "./commands/test-scenarios.md"
     },
     {
       "name": "/create-tech-design",
       "description": "Create technical design (tech-design.md) from requirements.md",
-      "path": ".claude/commands/create-tech-design.md"
+      "path": "./commands/create-tech-design.md"
     },
     {
       "name": "/create-research",
       "description": "Research codebase to understand existing implementation",
-      "path": ".claude/commands/create-research.md"
+      "path": "./commands/create-research.md"
     },
     {
       "name": "/start-tdd",
       "description": "Continue TDD implementation using orchestrator agent",
-      "path": ".claude/commands/start-tdd.md"
+      "path": "./commands/start-tdd.md"
     }
   ],
   "agents": [
     {
       "name": "requirements-analyzer",
       "description": "Analyzes requirements from JIRA tickets, user stories, or task descriptions and creates structured specification documents with testable acceptance criteria",
-      "path": ".claude/agents/requirements-analyzer.md"
+      "path": "./agents/requirements-analyzer.md"
     },
     {
       "name": "qa-engineer",
       "description": "Scenario content generator using Specification by Example. Transforms acceptance criteria into concrete Given-When-Then scenarios",
-      "path": ".claude/agents/qa-engineer.md"
+      "path": "./agents/qa-engineer.md"
     },
     {
       "name": "software-architect",
       "description": "Creates technical design documents that translate requirements into implementation plans following project architectural patterns",
-      "path": ".claude/agents/software-architect.md"
+      "path": "./agents/software-architect.md"
     },
     {
       "name": "codebase-locator",
       "description": "Finds WHERE files and components live in the codebase. Discovers file locations and maps component organization",
-      "path": ".claude/agents/codebase-locator.md"
+      "path": "./agents/codebase-locator.md"
     },
     {
       "name": "codebase-pattern-finder",
       "description": "Discovers patterns, conventions, and repeated structures in the codebase to identify architectural patterns",
-      "path": ".claude/agents/codebase-pattern-finder.md"
+      "path": "./agents/codebase-pattern-finder.md"
     },
     {
       "name": "codebase-analyzer",
       "description": "Understands HOW specific code works. Analyzes implementation details, traces data flow, and documents technical workings",
-      "path": ".claude/agents/codebase-analyzer.md"
+      "path": "./agents/codebase-analyzer.md"
     },
     {
       "name": "tdd-red",
       "description": "RED phase agent: Writes failing tests for acceptance criteria scenarios in the TDD workflow",
-      "path": ".claude/agents/tdd-red.md"
+      "path": "./agents/tdd-red.md"
     },
     {
       "name": "tdd-green",
       "description": "GREEN phase agent: Implements minimal production code to make failing tests pass",
-      "path": ".claude/agents/tdd-green.md"
+      "path": "./agents/tdd-green.md"
     },
     {
       "name": "tdd-refactor",
       "description": "REFACTOR phase agent: Improves code quality without changing behavior after all tests are passing",
-      "path": ".claude/agents/tdd-refactor.md"
+      "path": "./agents/tdd-refactor.md"
     }
   ]
 }
