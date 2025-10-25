@@ -40,7 +40,7 @@ plugins/your-plugin-name/
   "description": "Your plugin description",
   "author": "your-name",
   "license": "MIT",
-  "homepage": "https://github.com/dgomezs/tdd-specflow/tree/main/plugins/your-plugin-name",
+  "homepage": "https://gitlab.com/dgomezs2/ai/claude-code/-/tree/main/plugins/your-plugin-name",
   "keywords": ["keyword1", "keyword2"],
   "commands": [
     {
@@ -102,7 +102,7 @@ Create a comprehensive README.md in your plugin directory explaining:
 python3 -m json.tool < plugins/your-plugin-name/plugin.json > /dev/null
 
 # Test installation
-/plugin install /path/to/tdd-specflow/plugins/your-plugin-name
+/plugin install /path/to/claude-code/plugins/your-plugin-name
 
 # Test commands
 /your-command
@@ -141,5 +141,5 @@ For reference, see the main tdd-specflow plugin structure in the repository root
 
 Questions about adding plugins? See:
 - [MARKETPLACE.md](../MARKETPLACE.md) - Detailed marketplace documentation
-- [Issues](https://github.com/dgomezs/tdd-specflow/issues) - Report issues or ask questions
-- [Discussions](https://github.com/dgomezs/tdd-specflow/discussions) - Community discussions
+- [Issues](https://gitlab.com/dgomezs2/ai/claude-code/-/issues) - Report issues or ask questions
+- [Merge Requests](https://gitlab.com/dgomezs2/ai/claude-code/-/merge_requests) - Community discussions

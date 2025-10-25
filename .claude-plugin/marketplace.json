@@ -2,11 +2,11 @@
   "name": "tdd-specflow-marketplace",
   "owner": {
     "name": "dgomezs",
-    "url": "https://github.com/dgomezs/tdd-specflow"
+    "url": "https://gitlab.com/dgomezs2/ai/claude-code"
   },
   "metadata": {
     "description": "A comprehensive TDD workflow plugin with Specification by Example for Claude Code",
-    "version": "1.0.0",
+    "version": "0.0.1",
     "pluginRoot": "plugins"
   },
   "plugins": [
@@ -14,7 +14,7 @@
       "name": "tdd-specflow",
       "source": ".",
       "description": "Complete TDD workflow automation with BDD-style test scenarios, specialized agents for each TDD phase, and intelligent orchestration",
-      "version": "1.0.0",
+      "version": "0.0.1",
       "author": "dgomezs",
       "license": "MIT",
       "category": "development-workflow",

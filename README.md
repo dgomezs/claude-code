@@ -23,13 +23,13 @@ TDD SpecFlow provides a complete, automated workflow for building features using
 Install the plugin using Claude Code's plugin command:
 
 ```bash
-/plugin install https://github.com/dgomezs/tdd-specflow
+/plugin install https://gitlab.com/dgomezs2/ai/claude-code
 ```
 
 Or if using a local clone:
 
 ```bash
-/plugin install /path/to/tdd-specflow
+/plugin install /path/to/claude-code
 ```
 
 ## Quick Start
@@ -445,7 +445,7 @@ The `requirements-analyzer` will ask clarifying questions about business logic, 
 This repository is structured as a **Claude Code plugin marketplace** that can host multiple plugins. Currently, it contains the tdd-specflow plugin with infrastructure ready for expansion.
 
 ### Current Plugins
-- **tdd-specflow** (v1.0.0) - Main TDD workflow plugin (this document)
+- **tdd-specflow** (v0.0.1) - Main TDD workflow plugin (this document)
 
 ### Adding More Plugins
 See [MARKETPLACE.md](MARKETPLACE.md) for:
@@ -476,8 +476,8 @@ MIT License - see LICENSE file for details
 
 ## Support
 
-- **Issues**: https://github.com/dgomezs/tdd-specflow/issues
-- **Documentation**: https://github.com/dgomezs/tdd-specflow
+- **Issues**: https://gitlab.com/dgomezs2/ai/claude-code/-/issues
+- **Documentation**: https://gitlab.com/dgomezs2/ai/claude-code
 - **Claude Code Docs**: https://docs.claude.com/en/docs/claude-code
 
 ## Credits
@@ -485,3 +485,7 @@ MIT License - see LICENSE file for details
 Created by dgomezs for the Claude Code community.
 
 Built with Claude Code's powerful plugin system to bring enterprise-grade TDD workflows to AI-assisted development.
+
+### Acknowledgments
+
+The `/create-research` command is an adaptation of the innovative codebase research approach developed by [HumanLayer](https://github.com/humanlayer/humanlayer). We are grateful for their work in advancing AI-powered code analysis and documentation techniques.

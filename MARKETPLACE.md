@@ -8,8 +8,8 @@ This repository serves as a **Claude Code plugin marketplace** that can host mul
 A comprehensive TDD workflow plugin that combines Test-Driven Development with Specification by Example.
 
 **Location**: Root directory
-**Version**: 1.0.0
-**Installation**: `/plugin install https://github.com/dgomezs/tdd-specflow`
+**Version**: 0.0.1
+**Installation**: `/plugin install https://gitlab.com/dgomezs2/ai/claude-code`
 
 See [README.md](README.md) for complete documentation.
 
@@ -180,10 +180,10 @@ When adding plugins to this marketplace:
 
 ```bash
 # Install tdd-specflow (main plugin)
-/plugin install https://github.com/dgomezs/tdd-specflow
+/plugin install https://gitlab.com/dgomezs2/ai/claude-code
 
 # Install plugin from subdirectory (when available)
-/plugin install https://github.com/dgomezs/tdd-specflow/plugins/plugin-name
+/plugin install https://gitlab.com/dgomezs2/ai/claude-code/plugins/plugin-name
 ```
 
 ### Install via Marketplace Reference
@@ -202,7 +202,7 @@ Before committing new plugins:
 
 2. **Test Installation**:
    ```bash
-   /plugin install /path/to/tdd-specflow/plugins/your-plugin
+   /plugin install /path/to/claude-code/plugins/your-plugin
    ```
 
 3. **Verify Commands and Agents**:
@@ -233,8 +233,8 @@ To propose a new plugin:
 
 ## Support
 
-- **Issues**: https://github.com/dgomezs/tdd-specflow/issues
-- **Discussions**: https://github.com/dgomezs/tdd-specflow/discussions
+- **Issues**: https://gitlab.com/dgomezs2/ai/claude-code/-/issues
+- **Discussions**: https://gitlab.com/dgomezs2/ai/claude-code/-/merge_requests
 - **Claude Code Docs**: https://docs.claude.com/en/docs/claude-code
 
 ## License

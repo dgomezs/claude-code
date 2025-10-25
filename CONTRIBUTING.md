@@ -8,7 +8,7 @@ Thank you for your interest in contributing to TDD SpecFlow! This document provi
 
 If you find a bug or have a feature request:
 
-1. Check if the issue already exists in the [issue tracker](https://github.com/dgomezs/tdd-specflow/issues)
+1. Check if the issue already exists in the [issue tracker](https://gitlab.com/dgomezs2/ai/claude-code/-/issues)
 2. If not, create a new issue with:
    - Clear description of the problem or feature
    - Steps to reproduce (for bugs)
@@ -110,7 +110,7 @@ Before submitting a PR:
 
 1. **Install locally**: Test the plugin installation
    ```bash
-   /plugin install /path/to/your/fork/tdd-specflow
+   /plugin install /path/to/your/fork/claude-code
    ```
 
 2. **Test commands**: Verify all slash commands work
@@ -168,8 +168,8 @@ All changes should include documentation updates:
 
 If you have questions about contributing:
 
-1. Check existing [issues](https://github.com/dgomezs/tdd-specflow/issues)
-2. Open a [discussion](https://github.com/dgomezs/tdd-specflow/discussions)
+1. Check existing [issues](https://gitlab.com/dgomezs2/ai/claude-code/-/issues)
+2. Open a [merge request](https://gitlab.com/dgomezs2/ai/claude-code/-/merge_requests) for discussion
 3. Reference [Claude Code documentation](https://docs.claude.com/en/docs/claude-code)
 
 ## License
