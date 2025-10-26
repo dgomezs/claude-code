@@ -163,6 +163,20 @@ Return scenarios as structured JSON to enable clear separation of QA decisions f
 }
 ```
 
+**IMPORTANT - Content Structure:**
+
+The `content` field must contain EXACTLY these sections in this order:
+1. **Scenario heading**: `## Scenario: [Name]`
+2. **Description section**: `### Description` + explanation
+3. **Given-When-Then section**: `### Given-When-Then` + test steps
+4. **Separator**: `---`
+
+**DO NOT include these sections:**
+- ❌ Test Data (test data belongs in Given-When-Then)
+- ❌ Acceptance Criteria checkboxes (command handles implementation tracking)
+- ❌ Expected results (belongs in Then section)
+- ❌ Any other custom sections
+
 **Field Definitions:**
 
 - **scenarios**: Array of scenario objects
@@ -237,12 +251,23 @@ The command will:
 - ✅ No technical terms (no "API", "HTTP", "JSON")
 - ✅ Business-friendly language throughout
 - ✅ Non-technical person can understand content
+- ✅ ONLY Description and Given-When-Then sections (no Test Data or Acceptance Criteria)
 - ✅ Structured metadata enables orchestrator to organize files
 
 ## Example: Bad Scenario
 
 ```markdown
 ## Scenario: Valid organization name
+
+### Description
+Tests organization name validation.
+
+### Test Data
+- Organization: 550e8400-e29b-41d4-a716-446655440000
+- Input: example1
+- Expected: success
+
+### Given-When-Then
 
 **Given:**
 - API client initialized
@@ -258,9 +283,16 @@ The command will:
 - No ValidationException thrown
 - API returns 200 status
 - JSON response contains org ID
+
+### Acceptance Criteria
+- [ ] Validation succeeds
+- [ ] Organization created
+- [ ] Response returned
 ```
 
 **Why bad:**
+- ❌ Contains "Test Data" section (redundant - data belongs in Given-When-Then)
+- ❌ Contains "Acceptance Criteria" checkboxes (command handles implementation tracking)
 - ❌ Technical terms (API, HTTP, status code, JSON, regex)
 - ❌ Implementation details (value object, validation method, regex pattern)
 - ❌ Abstract data ("example1")
@@ -381,6 +413,14 @@ Before returning scenarios, verify EACH scenario passes ALL checks against the �
 8. ✓ Zero implementation details (no class names, method calls, file operations)?
 9. ✓ Did I ask ALL clarification questions before generating?
 10. ✓ Did I generate only the number of scenarios requested?
+11. ✓ Does content field contain ONLY these sections?
+    - ✓ Scenario heading (## Scenario: ...)
+    - ✓ Description section (### Description)
+    - ✓ Given-When-Then section (### Given-When-Then)
+    - ✓ Separator (---)
+    - ✗ NO Test Data section
+    - ✗ NO Acceptance Criteria checkboxes
+    - ✗ NO other custom sections
 
 **If ANY answer is NO, STOP and rewrite the scenario immediately.**
 
