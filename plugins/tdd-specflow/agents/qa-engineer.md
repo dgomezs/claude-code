@@ -80,7 +80,7 @@ Return scenarios as structured JSON to enable clear separation of QA decisions f
       "type": "happy-path|error-case|edge-case",
       "priority": 1,
       "acceptance_criterion": "AC-N",
-      "content": "## Scenario: [Descriptive Name]\n\n### Description\n[What this scenario validates]\n\n### Test Data\n- Input: \"concrete-example\"\n- Expected: [success/failure outcome]\n\n### Given-When-Then\n\n**Given:**\n- [Observable initial state]\n\n**When:**\n- [Observable action]\n\n**Then:**\n- [Observable outcome 1]\n- [Observable outcome 2]\n\n### Acceptance Criteria\n- [ ] [Verifiable outcome 1]\n- [ ] [Verifiable outcome 2]\n\n---"
+      "content": "## Scenario: [Descriptive Name]\n\n### Description\n[What this scenario validates]\n\n### Given-When-Then\n\n**Given:**\n- [Observable initial state with concrete data]\n\n**When:**\n- [Observable action with concrete data]\n\n**Then:**\n- [Observable outcome 1]\n- [Observable outcome 2]\n\n---"
     }
   ],
   "warnings": {
@@ -186,7 +186,7 @@ The command will:
       "type": "happy-path",
       "priority": 1,
       "acceptance_criterion": "AC-1",
-      "content": "## Scenario: Standard organization name with hyphen\n\n### Description\nValidates that properly formatted organization names with hyphens are accepted.\n\n### Test Data\n- Input: \"acme-corp\"\n- Expected: Name accepted\n\n### Given-When-Then\n\n**Given:**\n- Organization \"acme-corp\" does not exist in system\n\n**When:**\n- User submits organization name \"acme-corp\"\n\n**Then:**\n- Organization name is accepted\n- User can proceed to next step\n- Organization is created with name \"acme-corp\"\n\n### Acceptance Criteria\n- [ ] Name \"acme-corp\" is accepted\n- [ ] No error messages displayed\n- [ ] User can continue workflow\n\n---"
+      "content": "## Scenario: Standard organization name with hyphen\n\n### Description\nValidates that properly formatted organization names with hyphens are accepted.\n\n### Given-When-Then\n\n**Given:**\n- Organization \"acme-corp\" does not exist in system\n\n**When:**\n- User submits organization name \"acme-corp\"\n\n**Then:**\n- Organization name is accepted\n- User can proceed to next step\n- Organization is created with name \"acme-corp\"\n\n---"
     }
   ],
   "warnings": {
