@@ -224,6 +224,11 @@ After receiving JSON output from qa-engineer, perform file operations based on m
    [For each scenario where type === "happy-path", paste scenario.content]
    ```
 
+   **Note**: Each scenario.content includes:
+   - Description (what the scenario validates)
+   - Given-When-Then (full specification by example with concrete data)
+   - Implementation tracking is in scenarios.md, not in individual scenario files
+
    **error-cases.md**:
    ```markdown
    # Error Case Scenarios
