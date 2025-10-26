@@ -176,44 +176,107 @@ If agent returns `context_requests` array:
 3. Re-invoke agent with updated request
 4. Repeat until agent returns scenarios or "No gaps found"
 
-## Step 5: Process Agent Output
+## Step 5: Common File Operations
 
-After receiving JSON output from qa-engineer, perform file operations based on mode:
+All modes (except DELETE) use these common operations after receiving agent JSON output.
+
+### 5.1: Parse Agent JSON Response
+
+```javascript
+const response = JSON.parse(agent_output);
+const scenarios = response.scenarios || [];
+const warnings = response.warnings || {};
+const contextRequests = response.context_requests || [];
+```
+
+### 5.2: Display Warnings
+
+```
+if (warnings.duplicates?.length > 0) {
+  Display: ⚠️  Duplicate warnings: [list warnings.duplicates]
+}
+if (warnings.gaps?.length > 0) {
+  Display: ℹ️  Identified gaps: [list warnings.gaps]
+}
+if (warnings.implementation_impact?.length > 0) {
+  Display: ⚠️  Implementation impact: [list warnings.implementation_impact]
+  Display: "Review existing tests/code for needed updates"
+}
+```
+
+### 5.3: Write Scenario Content to Type File
+
+For any scenario that needs to be written or updated:
+
+```bash
+# Determine target file from scenario.type:
+target_file = test-scenarios/{scenario.type}.md
+# Where scenario.type is one of: "happy-path", "error-case", "edge-case"
+
+# Write scenario.content exactly as received from agent:
+[Paste scenario.content]
+
+# Agent's content includes:
+# - ## Scenario N.M: [Name] heading
+# - Proper blank lines (MD022/MD032 compliance)
+# - Trailing --- separator
+```
+
+### 5.4: Update scenarios.md Tracking
+
+For any scenario that needs tracking entry:
+
+```markdown
+### Scenario N.M: [scenario.name]
+- **Type**: [scenario.type]
+- **Details**: [test-scenarios/{scenario.type}.md#scenario-nm](test-scenarios/{scenario.type}.md#scenario-nm)
+- **Implementation Progress**: [ ] Test Written [ ] Implementation [ ] Refactoring
+```
+
+**Important**: When modifying existing entry, PRESERVE checkbox states.
+
+### 5.5: Determine Next Scenario Number
+
+When adding new scenarios, find the next available number for an AC:
+
+```bash
+# Read scenarios.md
+# Find all scenarios for the target AC (e.g., "AC-2")
+# Find highest number (e.g., if 2.1, 2.2, 2.3 exist → next is 2.4)
+# Return next_number
+```
+
+## Step 6: Mode-Specific Workflows
+
+After receiving JSON output from qa-engineer, perform mode-specific operations:
 
 ### For EXPAND Mode:
 
-**Agent returns:** JSON object with scenarios array
+Creates all scenario files from scratch.
 
 **Your tasks:**
 
-1. **Parse JSON response:**
-   ```javascript
-   const response = JSON.parse(agent_output);
-   const scenarios = response.scenarios;
-   const warnings = response.warnings;
-   ```
+1. **Use Step 5.1** to parse JSON response
 
-2. **Display warnings** if any:
-   ```
-   ⚠️  Warnings from QA Engineer:
-   - Duplicates: [list warnings.duplicates]
-   - Gaps: [list warnings.gaps]
-   - Implementation Impact: [list warnings.implementation_impact]
-   ```
+2. **Use Step 5.2** to display warnings
 
-3. **Group scenarios by type** using the `type` field:
-   - Filter scenarios where `type === "happy-path"` → happy-path.md
-   - Filter scenarios where `type === "error-case"` → error-cases.md
-   - Filter scenarios where `type === "edge-case"` → edge-cases.md
+3. **Group scenarios by type**:
+   - Filter `scenarios` where `type === "happy-path"` → happy-path.md
+   - Filter `scenarios` where `type === "error-case"` → error-cases.md
+   - Filter `scenarios` where `type === "edge-case"` → edge-cases.md
 
-4. **Create directory structure**:
+4. **Create directory**:
    ```bash
    mkdir -p <directory>/test-scenarios
    ```
 
-5. **Write scenario files**:
+5. **Assign scenario numbers**:
+   - Group scenarios by `acceptance_criterion` field (e.g., "AC-1")
+   - Sort within each AC by `priority` field (1, 2, 3...)
+   - Assign numbers: AC-1 → 1.1, 1.2, 1.3...; AC-2 → 2.1, 2.2...
+   - Agent determines priority (happy-path first, then error-case, then edge-case)
 
-   For each scenario type file, write header and scenarios:
+6. **Write type files** with headers:
 
    **happy-path.md**:
    ```markdown
@@ -221,13 +284,10 @@ After receiving JSON output from qa-engineer, perform file operations based on m
 
    Valid inputs and successful outcomes that represent typical user workflows.
 
-   [For each scenario where type === "happy-path", paste scenario.content]
-   ```
+   ---
 
-   **Note**: Each scenario.content includes:
-   - Description (what the scenario validates)
-   - Given-When-Then (full specification by example with concrete data)
-   - Implementation tracking is in scenarios.md, not in individual scenario files
+   [For each happy-path scenario, use Step 5.3 to write scenario.content]
+   ```
 
    **error-cases.md**:
    ```markdown
@@ -235,7 +295,9 @@ After receiving JSON output from qa-engineer, perform file operations based on m
 
    Invalid inputs and failure conditions.
 
-   [For each scenario where type === "error-case", paste scenario.content]
+   ---
+
+   [For each error-case scenario, use Step 5.3 to write scenario.content]
    ```
 
    **edge-cases.md**:
@@ -244,221 +306,118 @@ After receiving JSON output from qa-engineer, perform file operations based on m
 
    Boundary values, limits, and unusual but valid conditions.
 
-   [For each scenario where type === "edge-case", paste scenario.content]
+   ---
+
+   [For each edge-case scenario, use Step 5.3 to write scenario.content]
    ```
 
-6. **Assign scenario numbers using agent's priority**:
-   - Group scenarios by `acceptance_criterion` field (e.g., "AC-1")
-   - Sort scenarios within each AC by `priority` field (ascending: 1, 2, 3...)
-   - Assign numbers: `AC-N → Scenario N.1, N.2, N.3...`
-   - Example: AC-1 scenarios sorted by priority → 1.1, 1.2, 1.3
-
-   **Important**: The agent determines priority based on QA expertise:
-   - Priority 1-N: Happy-path scenarios (ordered by business criticality)
-   - Priority N+1+: Error-case scenarios
-   - Lowest priority: Edge-case scenarios
-
-   The command simply respects the agent's priority ordering.
-
-7. **Generate scenarios.md** with implementation tracking:
+7. **Create scenarios.md** with tracking:
    ```markdown
    # Test Scenarios
 
-   This document lists all test scenarios derived from acceptance criteria in requirements.md.
-   Each scenario has implementation tracking checkboxes for implementation progress.
+   [For each AC in requirements.md:]
+   ## AC-N: [Title from requirements.md]
 
-   ## AC-1: [Title from requirements.md]
+   **Source**: [requirements.md#ac-n](requirements.md#ac-n)
 
-   **Source**: [requirements.md#ac-1](requirements.md#ac-1)
-
-   ### Scenario 1.1: [Name from agent]
-   - **Type**: happy-path
-   - **Details**: [test-scenarios/happy-path.md#scenario-11](test-scenarios/happy-path.md#scenario-11)
-   - **Implementation Progress**: [ ] Test Written [ ] Implementation [ ] Refactoring
-
-   ### Scenario 1.2: [Name from agent]
-   - **Type**: error-case
-   - **Details**: [test-scenarios/error-cases.md#scenario-12](test-scenarios/error-cases.md#scenario-12)
-   - **Implementation Progress**: [ ] Test Written [ ] Implementation [ ] Refactoring
-
-   [Continue for all scenarios]
-
-   ## AC-2: [Next AC Title]
-   ...
+   [For each scenario for this AC, use Step 5.4 to create tracking entry]
    ```
-
-8. **Update scenario files with anchors**:
-   - Add heading anchors for linking in each type file
-   - Format each scenario heading: `## Scenario N.M: [Name]`
-   - Use the scenario number assigned in step 6
 
 ### For ADD Mode:
 
-**Agent returns:** JSON object with single scenario, warnings about duplicates
-
-**Parse JSON:**
-```javascript
-const response = JSON.parse(agent_output);
-const scenario = response.scenarios[0];  // Single scenario
-const warnings = response.warnings;
-```
+Adds one new scenario to existing set.
 
 **Your tasks:**
 
-1. **Check for duplicate warnings:**
+1. **Use Step 5.1** to parse JSON (get `scenarios[0]` as the single scenario)
+
+2. **Use Step 5.2** to display warnings
+
+3. **Check for duplicates** - if `warnings.duplicates` is not empty:
    ```
-   if (warnings.duplicates.length > 0) {
-     Display: ⚠️  Possible duplicates: [list warnings.duplicates]
-     Ask user: "Proceed anyway? (yes/no)"
-     If no, abort
-   }
-   ```
-
-2. **Determine next scenario number:**
-   - Read existing scenarios.md to find all scenarios for the AC specified in `scenario.acceptance_criterion`
-   - Find highest number (e.g., if 1.1, 1.2 exist → next is 1.3)
-
-3. **Append to appropriate file** using `scenario.type`:
-   ```bash
-   # Determine file: test-scenarios/{scenario.type}.md
-   # Example: if scenario.type === "happy-path" → test-scenarios/happy-path.md
-   # Append:
-
-   ## Scenario [N.M]: [scenario.name]
-
-   [Paste scenario.content]
+   Ask user: "Proceed anyway? (yes/no)"
+   If no, abort
    ```
 
-4. **Update scenarios.md**:
-   ```bash
-   # Find AC-N section (from scenario.acceptance_criterion)
-   # Append after existing scenarios:
+4. **Use Step 5.5** to determine next scenario number for the AC
 
-   ### Scenario N.M: [scenario.name]
-   - **Type**: [scenario.type]
-   - **Details**: [test-scenarios/{scenario.type}.md#scenario-nm](test-scenarios/{scenario.type}.md#scenario-nm)
-   - **Implementation Progress**: [ ] Test Written [ ] Implementation [ ] Refactoring
-   ```
+5. **Use Step 5.3** to append scenario.content to appropriate type file
 
-5. **Display confirmation**:
+6. **Use Step 5.4** to add tracking entry to scenarios.md under the AC section
+
+7. **Display confirmation**:
    ```
    ✅ Added Scenario N.M: [scenario.name]
    - Type: [scenario.type]
    - AC: [scenario.acceptance_criterion]
-   - File: test-scenarios/{scenario.type}.md
-   - Ready for implementation
    ```
 
 ### For MODIFY Mode:
 
-**Agent returns:** JSON object with updated scenario and warnings
-
-**Parse JSON:**
-```javascript
-const response = JSON.parse(agent_output);
-const scenario = response.scenarios[0];  // Updated scenario
-const warnings = response.warnings;
-```
+Updates an existing scenario.
 
 **Your tasks:**
 
-1. **Update scenario file** using `scenario.type`:
-   ```bash
-   # Find scenario in <directory>/test-scenarios/{scenario.type}.md
-   # Locate heading: ## Scenario N.M: [Old Name]
-   # Replace entire section with:
-   ## Scenario N.M: [scenario.name]
+1. **Use Step 5.1** to parse JSON (get `scenarios[0]` as the updated scenario)
 
-   [scenario.content]
-   ```
+2. **Use Step 5.2** to display warnings
 
-2. **Update scenarios.md** (if name or type changed):
-   ```bash
-   # Find scenario entry: ### Scenario N.M
-   # Update:
-   ### Scenario N.M: [scenario.name]
-   - **Type**: [scenario.type]
-   - **Details**: [test-scenarios/{scenario.type}.md#scenario-nm]
-   # PRESERVE existing checkbox states - DO NOT reset them
-   ```
+3. **Update type file**:
+   - Find scenario in `test-scenarios/{scenario.type}.md`
+   - Locate section starting with `## Scenario N.M:`
+   - Replace entire section (from heading to `---`) with **Step 5.3** content
 
-3. **Display warnings**:
+4. **Update scenarios.md** (if name or type changed):
+   - Find scenario entry `### Scenario N.M`
+   - Update name and type using **Step 5.4** format
+   - **PRESERVE existing checkbox states**
+
+5. **Display confirmation**:
    ```
    ✅ Modified Scenario N.M: [scenario.name]
-
-   ⚠️ Warnings from QA Engineer:
-   - Implementation Impact: [list warnings.implementation_impact]
 
    If tests/implementation exist, review them for needed updates.
    ```
 
 ### For DISCOVER Mode:
 
-**Agent returns:** JSON object with new scenarios OR context requests OR "No gaps found"
-
-The agent handles gap analysis and Q&A internally, then generates scenarios to fill gaps.
-
-**Parse JSON:**
-```javascript
-const response = JSON.parse(agent_output);
-```
+Analyzes existing scenarios for gaps and adds missing scenarios.
 
 **Your tasks:**
 
-1. **If agent returns context_requests:**
+1. **Use Step 5.1** to parse JSON
+
+2. **Handle context requests** (if any):
    ```
-   if (response.context_requests && response.context_requests.length > 0) {
-     For each requested file in context_requests:
+   if (response.context_requests?.length > 0) {
+     For each requested file:
        - Read the file
        - Append to original request: "Additional Context:\n\nFile: {filename}\n{content}\n"
      Re-invoke qa-engineer agent with updated request
-     Continue to step 2 when agent returns scenarios or "No gaps"
+     Return to step 1 when agent responds
    }
    ```
 
-2. **If agent returns new scenarios:**
+3. **If scenarios found** (`response.scenarios.length > 0`):
+
+   a. **Use Step 5.2** to display warnings (especially gaps identified)
+
+   b. **For each new scenario**:
+      - **Use Step 5.5** to determine next scenario number for the AC
+      - **Use Step 5.3** to append to appropriate type file
+      - **Use Step 5.4** to add tracking entry to scenarios.md
+
+   c. **Display summary**:
+      ```
+      ✅ Discovered and added {count} new scenarios:
+      - Scenario X.Y: [scenario.name] ({scenario.type})
+      [list all new scenarios]
+      ```
+
+4. **If no gaps found** (`response.message === "No gaps found - coverage is complete"`):
    ```
-   if (response.scenarios && response.scenarios.length > 0) {
-     Display warnings if any:
-       ⚠️  Identified Gaps: [list response.warnings.gaps]
-
-     For each scenario in response.scenarios:
-       - Get AC from scenario.acceptance_criterion
-       - Determine next scenario number for that AC:
-         - Read scenarios.md to find existing scenarios for that AC
-         - Find highest number (e.g., if AC-2 has 2.1, 2.2 → next is 2.3)
-       - Append to test-scenarios/{scenario.type}.md:
-         ## Scenario N.M: [scenario.name]
-
-         [scenario.content]
-
-         ---
-       - Update scenarios.md under AC section:
-         ### Scenario N.M: [scenario.name]
-         - **Type**: [scenario.type]
-         - **Details**: [test-scenarios/{scenario.type}.md#scenario-nm]
-         - **Implementation Progress**: [ ] Test Written [ ] Implementation [ ] Refactoring
-
-     Display summary:
-       ✅ Discovered and added {count} new scenarios:
-       - Scenario X.Y: [scenario.name] ({scenario.type})
-       - Scenario X.Z: [scenario.name] ({scenario.type})
-       ...
-
-       Updated files:
-       - scenarios.md
-       - test-scenarios/{types}.md
-   }
-   ```
-
-3. **If agent returns "No gaps found":**
-   ```
-   if (response.message === "No gaps found - coverage is complete") {
-     Display:
-       ✅ No gaps found - scenario coverage is complete
-
-       All acceptance criteria have comprehensive test scenarios.
-   }
+   Display:
+     ✅ No gaps found - scenario coverage is complete
    ```
 
 ### For DELETE Mode:
